@@ -3,8 +3,8 @@ extends Label
 const STATE_STRINGS = [
   "idle",
   "move",
-  "jump",
   "bump",
+  "jump",
   "fall"
 ]
 

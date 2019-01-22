@@ -13,3 +13,12 @@ position = Vector2( 467.525, 336.289 )
 [node name="Rock" parent="YSort" instance=ExtResource( 2 )]
 position = Vector2( 701.287, 246.065 )
 
+[node name="Rock2" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 262.983, 142.82 )
+
+[node name="Rock3" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 313.631, 575.28 )
+
+[node name="Rock4" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 942.841, 509.047 )
+

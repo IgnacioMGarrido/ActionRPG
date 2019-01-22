@@ -10,7 +10,9 @@ extents = Vector2( 45.6097, 26.7971 )
 
 extents = Vector2( 20.0824, 18.4346 )
 
-[node name="Rock" type="StaticBody2D"]
+[node name="Rock" type="StaticBody2D" groups=[
+"environment",
+]]
 __meta__ = {
 "_edit_group_": true
 }
