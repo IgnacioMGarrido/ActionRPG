@@ -1,7 +1,6 @@
 extends Label
 
 const STATE_STRINGS = [
-  "spawn",
   "idle",
   "move",
   "jump",

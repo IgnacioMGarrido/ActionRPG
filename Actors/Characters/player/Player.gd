@@ -14,7 +14,7 @@ func _physics_process(delta) -> void:
 	handle_eight_direction_input()
 	
 
-	
+	#For the arrow visualizer
 	if input_direction and input_direction != last_move_direction:
 		emit_signal('direction_changed', input_direction)
 
