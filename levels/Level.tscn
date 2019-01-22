@@ -1,24 +1,28 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Actors/Characters/player/Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://environment/Rock.tscn" type="PackedScene" id=2]
+[ext_resource path="res://environment/Gap.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Actors/Characters/player/Player.tscn" type="PackedScene" id=2]
+[ext_resource path="res://environment/Rock.tscn" type="PackedScene" id=3]
 
 [node name="Level" type="Node2D"]
 
+[node name="Gap" parent="." instance=ExtResource( 1 )]
+position = Vector2( 640.898, 405.188 )
+
 [node name="YSort" type="YSort" parent="."]
 
-[node name="Player" parent="YSort" instance=ExtResource( 1 )]
-position = Vector2( 467.525, 336.289 )
+[node name="Player" parent="YSort" instance=ExtResource( 2 )]
+position = Vector2( 188.958, 377.197 )
 
-[node name="Rock" parent="YSort" instance=ExtResource( 2 )]
+[node name="Rock" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 701.287, 246.065 )
 
-[node name="Rock2" parent="YSort" instance=ExtResource( 2 )]
+[node name="Rock2" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 262.983, 142.82 )
 
-[node name="Rock3" parent="YSort" instance=ExtResource( 2 )]
+[node name="Rock3" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 313.631, 575.28 )
 
-[node name="Rock4" parent="YSort" instance=ExtResource( 2 )]
+[node name="Rock4" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 942.841, 509.047 )
 

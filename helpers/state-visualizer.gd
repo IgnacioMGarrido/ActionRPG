@@ -1,11 +1,12 @@
 extends Label
 
 const STATE_STRINGS = [
-  "idle",
-  "move",
-  "bump",
-  "jump",
-  "fall"
+  "SPAWN",
+  "IDLE",
+  "MOVE",
+  "JUMP",
+  "BUMP",
+  "FALL"
 ]
 
 
