@@ -1,23 +1,46 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Actors/Characters/Character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Actors/Characters/player/Player.gd" type="Script" id=2]
 [ext_resource path="res://Actors/Characters/player/body.png" type="Texture" id=3]
 [ext_resource path="res://helpers/direction/DirectionVisualizer.gd" type="Script" id=4]
 [ext_resource path="res://helpers/direction/arrow.png" type="Texture" id=5]
+[ext_resource path="res://helpers/source-code-pro-bold.otf" type="DynamicFontData" id=6]
+[ext_resource path="res://helpers/state-visualizer.gd" type="Script" id=7]
 
-[node name="Player" instance=ExtResource( 1 )]
+[sub_resource type="DynamicFont" id=1]
+
+size = 25
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 6 )
+
+[node name="Player" index="0" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="Body" parent="Pivot" index="0"]
 texture = ExtResource( 3 )
 
 [node name="DirectionVisualizer" type="Position2D" parent="." index="5"]
+editor/display_folded = true
 script = ExtResource( 4 )
 
-[node name="Sprite" type="Sprite" parent="DirectionVisualizer" index="0"]
+[node name="Arrow" type="Sprite" parent="DirectionVisualizer" index="0"]
 position = Vector2( 90, 0 )
 texture = ExtResource( 5 )
 
 [node name="Tween" type="Tween" parent="DirectionVisualizer" index="1"]
+
+[node name="StateVisualizer" type="Label" parent="." index="6"]
+margin_left = -43.2038
+margin_top = 14.0872
+margin_right = 46.7962
+margin_bottom = 46.0872
+grow_horizontal = 0
+grow_vertical = 0
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 0.917647, 0.886275, 0.121569, 1 )
+text = "prueba"
+align = 1
+valign = 1
+script = ExtResource( 7 )
 
