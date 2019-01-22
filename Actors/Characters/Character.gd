@@ -67,7 +67,7 @@ func _change_state(new_state) -> void:
 		States.JUMP:
 			air_speed = speed
 			max_air_speed = max_speed
-			air_velocity = velocity
+			air_velocity = velocity if input_direction else Vector2()
 			$AnimationPlayer.play('Idle')
 			
 			$Tween.interpolate_method(self, '_animate_jump_height', 0, 1, JUMP_DURATION, Tween.TRANS_LINEAR, Tween.EASE_IN)
@@ -102,6 +102,7 @@ func _physics_process(delta) -> void:
 				_change_state(States.BUMP)
 	elif state == States.JUMP:
 		jump(delta)
+
 
 func update_direction() -> void:
 	if input_direction:
@@ -152,35 +153,22 @@ func _on_Tween_tween_completed(object : Object, key : NodePath) -> void:
 
 
 func _animate_bump_height(progress) -> void:
-	self.height = - pow(sin(progress * PI), 0.4) * MAX_BUMP_HEIGHT
-	var shadow_scale = (-sin(progress* PI)) * 0.3 + 1
-	$Shadow.scale = Vector2(shadow_scale, shadow_scale)
+	self.height =  pow(sin(progress * PI), 0.4) * MAX_BUMP_HEIGHT
+
 
 
 func _animate_jump_height(progress) -> void:
-	self.height = - pow(sin(progress * PI), 0.7) * MAX_JUMP_HEIGHT
-	var shadow_scale = (-sin(progress* PI)) * 0.5 + 1
-	$Shadow.scale = Vector2(shadow_scale, shadow_scale)
+	self.height =  pow(sin(progress * PI), 0.7) * MAX_JUMP_HEIGHT
+
 
 func _on_Gap_body_fell(rid):
 	if rid == get_rid():
 		_change_state(States.FALL)
 
+
 func set_height(value) -> void:
-	$Pivot.position.y = value
 	height = value
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	$Pivot.position.y = - height
+	var shadow_scale = 1 - value / MAX_JUMP_HEIGHT * 0.4
+	$Shadow.scale = Vector2(shadow_scale, shadow_scale)
 
