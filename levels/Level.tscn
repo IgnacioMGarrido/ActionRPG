@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Actors/Characters/player/Player.tscn" type="PackedScene" id=1]
+
+[node name="Level" type="Node2D"]
+
+[node name="YSort" type="YSort" parent="."]
+
+[node name="Player" parent="YSort" instance=ExtResource( 1 )]
+position = Vector2( 467.525, 336.289 )
+
