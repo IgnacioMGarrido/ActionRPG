@@ -28,3 +28,5 @@ func handle_eight_direction_input() -> void:
 	input_direction.y = float(Input.is_action_pressed('move_down')) - float(Input.is_action_pressed('move_up'))
 	
 	max_speed = MAX_RUN_SPEED if Input.is_action_pressed('run') else MAX_WALK_SPEED
+
+	

@@ -17,13 +17,21 @@ const MAX_BUMP_HEIGHT = 50
 const JUMP_DURATION = 0.8
 const MAX_JUMP_HEIGHT = 80 
 
+const GROUND_ACCELERATION = 1000
+const GROUND_DECCELERATION = 2000
+const GROUND_STEERING_POWER = 40
+
+const WALK_MASS = 10.0
+const RUN_MASS = 3.0
+const STOP_THRESHOLD = 10
+
 const AIR_ACCELERATION = 1000
 const AIR_DECCELERATION = 2000
 const AIR_STEERING_POWER = 40
 
 const GAP_SIZE = Vector2(128, 80)
 
-
+var current_mass = 0.0
 var height = 0.0 setget set_height
 
 #Air Related variables
@@ -63,6 +71,7 @@ func _change_state(new_state) -> void:
 		States.IDLE:
 			$AnimationPlayer.play("Idle")
 		States.MOVE:
+			speed = max_speed
 			$AnimationPlayer.play("walk")
 		States.JUMP:
 			air_speed = speed
@@ -73,12 +82,14 @@ func _change_state(new_state) -> void:
 			$Tween.interpolate_method(self, '_animate_jump_height', 0, 1, JUMP_DURATION, Tween.TRANS_LINEAR, Tween.EASE_IN)
 			$Tween.start()
 		States.BUMP:
+			velocity = Vector2.ZERO
 			$AnimationPlayer.stop()
 			
 			$Tween.interpolate_property(self, 'position', position, position + BUMP_DISTANCE * -last_move_direction,BUMP_DURATION, Tween.TRANS_LINEAR, Tween.EASE_IN)
 			$Tween.interpolate_method(self, '_animate_bump_height', 0, 1, BUMP_DURATION, Tween.TRANS_LINEAR, Tween.EASE_IN)
 			$Tween.start() 
 		States.FALL:
+			velocity = Vector2.ZERO
 			$Tween.interpolate_property(self, 'scale', scale, Vector2(0,0), .4, Tween.TRANS_QUAD, Tween.EASE_IN)
 			$Tween.start()
 	state = new_state
@@ -92,7 +103,8 @@ func _physics_process(delta) -> void:
 	if state == States.IDLE and input_direction:
 		_change_state(States.MOVE)
 	elif state == States.MOVE:
-		if not input_direction:
+		print(velocity.length())
+		if not input_direction && velocity.length() < STOP_THRESHOLD:
 			_change_state(States.IDLE)
 		
 		var collision_info : KinematicCollision2D = move(delta)
@@ -111,13 +123,17 @@ func update_direction() -> void:
 
 func move(delta) -> KinematicCollision2D:
 	if input_direction:
-		if speed != max_speed:
-			speed = max_speed
+		speed = max_speed
 	else:
 		speed = 0.0
-	emit_signal('speed_updated', speed)
+	speed = clamp(speed,0, max_speed)
 	
-	velocity = input_direction.normalized() * speed;
+	var target_velocity = input_direction.normalized() * speed
+	var steering = target_velocity - velocity
+	
+	current_mass = RUN_MASS if speed == max_speed else WALK_MASS
+	
+	velocity += steering / current_mass
 	move_and_slide(velocity, Vector2(), 5, 2)
 	
 	var slide_count : int = get_slide_count()
