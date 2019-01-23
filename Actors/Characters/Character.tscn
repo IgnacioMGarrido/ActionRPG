@@ -1,8 +1,15 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Actors/Characters/CharacterSM.gd" type="Script" id=1]
 [ext_resource path="res://Actors/Characters/npc/body.png" type="Texture" id=2]
 [ext_resource path="res://Actors/shadow.png" type="Texture" id=3]
+[ext_resource path="res://Actors/Characters/States/Idle.gd" type="Script" id=4]
+[ext_resource path="res://Actors/Characters/States/Move.gd" type="Script" id=5]
+[ext_resource path="res://Actors/Characters/States/Jump.gd" type="Script" id=6]
+[ext_resource path="res://Actors/Characters/States/Bump.gd" type="Script" id=7]
+[ext_resource path="res://Actors/Characters/States/Fall.gd" type="Script" id=8]
+[ext_resource path="res://Actors/Characters/States/Spawn.gd" type="Script" id=9]
+[ext_resource path="res://Actors/Characters/Input/InputHandler.gd" type="Script" id=10]
 
 [sub_resource type="Animation" id=1]
 
@@ -172,16 +179,26 @@ texture = ExtResource( 3 )
 shape = SubResource( 4 )
 
 [node name="States" type="Node" parent="."]
+editor/display_folded = true
 
 [node name="Idle" type="Node" parent="States"]
+script = ExtResource( 4 )
 
 [node name="Move" type="Node" parent="States"]
+script = ExtResource( 5 )
 
 [node name="Jump" type="Node" parent="States"]
+script = ExtResource( 6 )
 
 [node name="Bump" type="Node" parent="States"]
+script = ExtResource( 7 )
 
 [node name="Fall" type="Node" parent="States"]
+script = ExtResource( 8 )
 
 [node name="Spawn" type="Node" parent="States"]
+script = ExtResource( 9 )
+
+[node name="InputHandler" type="Node" parent="."]
+script = ExtResource( 10 )
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://environment/Gap.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Actors/Characters/player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://environment/Rock.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Actors/Characters/npc/Basic_NPC.tscn" type="PackedScene" id=4]
 
 [node name="Level" type="Node2D"]
 
@@ -25,4 +26,10 @@ position = Vector2( 313.631, 575.28 )
 
 [node name="Rock4" parent="YSort" instance=ExtResource( 3 )]
 position = Vector2( 942.841, 509.047 )
+
+[node name="Basic_NPC" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 497.811, 164.454 )
+
+[node name="Basic_NPC2" parent="YSort" instance=ExtResource( 4 )]
+position = Vector2( 993.765, 212.287 )
 

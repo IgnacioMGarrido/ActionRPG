@@ -12,15 +12,13 @@ var speed = 0.0
 var max_speed = 0.0
 var velocity = Vector2()
 
-
+onready var inputHandler : InputHandler = $"../../InputHandler"
 var last_move_direction : Vector2 = Vector2(1,0)
-#FIXME: Maybe eliminate this state and create a classs for the input type foer npc and characters
+
 
 
 func get_input_direction():
-	var input_direction = Vector2()
-	input_direction.x = int(Input.is_action_pressed("move_right")) - int(Input.is_action_pressed("move_left"))
-	input_direction.y = int(Input.is_action_pressed("move_down")) - int(Input.is_action_pressed("move_up"))
+	var input_direction = inputHandler.get_input_direction()
 	last_move_direction = input_direction
 	emit_signal('direction_changed', input_direction)
 	return input_direction

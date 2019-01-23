@@ -10,14 +10,14 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "KinematicBody2D",
-"class": "Character",
-"language": "GDScript",
-"path": "res://Actors/Characters/Character.gd"
-}, {
-"base": "KinematicBody2D",
 "class": "CharacterSM",
 "language": "GDScript",
 "path": "res://Actors/Characters/CharacterSM.gd"
+}, {
+"base": "Node",
+"class": "InputHandler",
+"language": "GDScript",
+"path": "res://Actors/Characters/Input/InputHandler.gd"
 }, {
 "base": "Node",
 "class": "Motion",
@@ -29,22 +29,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Actors/Characters/States/OnGround.gd"
 }, {
-"base": "KinematicBody2D",
-"class": "Player",
-"language": "GDScript",
-"path": "res://Actors/Characters/player/Player.gd"
-}, {
 "base": "Node",
 "class": "State",
 "language": "GDScript",
 "path": "res://Actors/Characters/States/State.gd"
 } ]
 _global_script_class_icons={
-"Character": "",
 "CharacterSM": "",
+"InputHandler": "",
 "Motion": "",
 "OnGround": "",
-"Player": "",
 "State": ""
 }
 

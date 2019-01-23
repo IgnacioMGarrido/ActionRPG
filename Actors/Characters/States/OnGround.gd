@@ -5,7 +5,7 @@ class_name OnGround
 
 #FIXME: Move the events to an input class
 func handle_input(host, event):
-	if event.is_action_pressed('attack'):
+	if inputHandler.is_attack_activated():
 		return null
-	if event.is_action_pressed('jump'):
+	if inputHandler.is_jump_activated():
 		return 'jump'
