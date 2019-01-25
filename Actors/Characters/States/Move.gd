@@ -24,7 +24,7 @@ func handle_input(host, event):
 func update(host, delta):
 	var input_direction = get_input_direction()
 	if not input_direction:
-		return "idle"
+		emit_signal("finished", "idle")
 	update_look_direction(host, input_direction)
 
 	speed = get_current_speed()
@@ -32,7 +32,7 @@ func update(host, delta):
 	if not collision_info:
 		return
 	if speed == MAX_RUN_SPEED and collision_info.collider.is_in_group('environment'):
-		return "bump"
+		emit_signal("finished", "bump")
 
 
 func move(host, speed, direction):

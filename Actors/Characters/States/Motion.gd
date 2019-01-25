@@ -15,7 +15,11 @@ var velocity = Vector2()
 onready var inputHandler : InputHandler = $"../../InputHandler"
 var last_move_direction : Vector2 = Vector2(1,0)
 
-
+func handle_input(host,event):
+	if inputHandler.is_damaged():
+		print("aaa")
+		emit_signal("finished", "stagger")
+		
 
 func get_input_direction():
 	var input_direction = inputHandler.get_input_direction()

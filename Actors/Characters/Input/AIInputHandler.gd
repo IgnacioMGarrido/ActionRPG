@@ -10,3 +10,6 @@ func is_jump_activated():
 
 func is_attack_activated():
 	return false
+	
+func is_damaged():
+	pass

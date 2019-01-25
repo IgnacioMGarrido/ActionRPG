@@ -33,7 +33,7 @@ func update(host, delta):
 	#FIXME: Cambiarlo por on_Tween_tween_completed??
 	timer += delta
 	if timer >= BUMP_DURATION:
-		return "move"
+		emit_signal("finished", "move")
 	_animate_bump_height(host)
 
 

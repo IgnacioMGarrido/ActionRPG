@@ -8,4 +8,5 @@ func handle_input(host, event):
 	if inputHandler.is_attack_activated():
 		return null
 	if inputHandler.is_jump_activated():
-		return 'jump'
+		emit_signal("finished", "jump")
+	return .handle_input(host,event)

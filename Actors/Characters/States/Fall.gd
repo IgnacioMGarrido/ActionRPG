@@ -21,4 +21,4 @@ func exit(host):
 func update(host, delta):
 	timer += delta
 	if timer >= FALL_DURATION:
-		return "spawn"
+		emit_signal("finished", "spawn")

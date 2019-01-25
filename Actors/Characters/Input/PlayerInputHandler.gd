@@ -12,3 +12,6 @@ func is_jump_activated():
 
 func is_attack_activated():
 	return Input.is_action_pressed('attack')
+
+func is_damaged():
+	return Input.is_action_pressed('simulate_damage')

@@ -28,7 +28,7 @@ func _on_body_exited(body):
 
 func _physics_process(delta):
 	for body in overlapping_bodies_ids:
-		if body.current_state == body.get_node("States/Jump"):
+		if body.current_state == body.get_node("States/Jump") || body.current_state == body.get_node("States/Stagger"):
 			continue
 
 		var body_rid = body.get_rid()

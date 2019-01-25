@@ -6,6 +6,8 @@ extends Node
 class_name State
 
 
+signal finished(next_state_name)
+
 enum STATE_IDS { NULL, IDLE, MOVE, ATTACK, BUMP }
 
 
@@ -24,4 +26,8 @@ func handle_input(host, event):
 
 
 func update(host, delta):
+	pass
+
+
+func _on_AnimationPlayer_animation_finished(anim_name):
 	pass

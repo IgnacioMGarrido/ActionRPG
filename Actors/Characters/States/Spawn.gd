@@ -20,4 +20,4 @@ func enter(host):
 func update(host, delta):
 	timer += delta
 	if timer >= SPAWN_DURATION:
-		return "idle"
+		emit_signal("finished", "idle")

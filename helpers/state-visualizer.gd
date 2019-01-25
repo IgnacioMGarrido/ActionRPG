@@ -5,9 +5,9 @@ func _ready():
 	$'..'.connect('state_changed', self, '_on_Player_state_changed')
 
 
-func _on_Player_state_changed(new_state):
+func _on_Player_state_changed(state_stack):
 
-	print(new_state)
-	text = new_state
+	print(state_stack[0].get_name())
+	text = state_stack[0].get_name()
 	
 
