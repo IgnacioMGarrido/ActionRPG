@@ -22,12 +22,12 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "Motion",
 "language": "GDScript",
-"path": "res://Actors/Characters/States/Motion.gd"
+"path": "res://Actors/Characters/States/Motion/Motion.gd"
 }, {
 "base": "Node",
 "class": "OnGround",
 "language": "GDScript",
-"path": "res://Actors/Characters/States/OnGround.gd"
+"path": "res://Actors/Characters/States/Motion/OnGround/OnGround.gd"
 }, {
 "base": "Node",
 "class": "State",
