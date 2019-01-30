@@ -8,6 +8,9 @@
 
 This project is heavily based on [Make Professional 2d Games with Godot](https://github.com/GDquest/make-pro-2d-games-with-godot/) and it is made with the purpose of learning Godot
 
+<p align='center'>
+  <img src="http://i.imgur.com/YP7nnP5.png" alt="Screenshot of the current state of the project" />
+</p>
 
 ## Dependencies ##
 
